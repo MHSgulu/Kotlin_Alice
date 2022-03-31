@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/favorite"
+        android:icon="@mipmap/ic_round_favorite_white_24"
+        android:title="@string/menu_favorite"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/search"
+        android:icon="@mipmap/ic_round_search_white_24"
+        android:title="@string/search"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/more"
+        android:title="@string/menu_more"
+        app:showAsAction="never" />
+
+</menu>
+
+    <!--
+    app:showAsAction 属性用于指定操作是否应在应用栏中显示为按钮。
+    如果您设置了 app:showAsAction="ifRoom"（如示例代码的“收藏”操作中的设置），
+    那么只要应用栏中有足够的空间，此操作便会显示为按钮；
+    如果空间不足，无法容纳的操作就会被发送到溢出菜单。
+    如果您设置了 app:showAsAction="never"（如示例代码的“设置”操作中的设置），
+    此操作会始终列在溢出菜单中，而不会显示在应用栏中。
+
+    如果操作显示在应用栏中，系统会使用操作的图标作为操作按钮。
+    您可以在 Material 图标页面找到许多有用的图标。
+    -->

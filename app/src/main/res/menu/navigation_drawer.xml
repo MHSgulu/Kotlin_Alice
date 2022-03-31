@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/item1"
+            android:icon="@mipmap/ic_round_pending_black_24"
+            android:title="@string/menu_drawer_1" />
+        <item
+            android:id="@+id/item2"
+            android:icon="@mipmap/ic_round_stars_black_24"
+            android:title="@string/menu_drawer_2" />
+        <item
+            android:id="@+id/item3"
+            android:icon="@mipmap/ic_round_group_work_black_24"
+            android:title="@string/menu_drawer_3" />
+        <item
+            android:id="@+id/item4"
+            android:icon="@mipmap/ic_round_info_black_48"
+            android:title="@string/menu_drawer_4" />
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkable="true"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/subtitle"
+            android:title="@string/menu_sub_title">
+            <menu>
+                <item
+                    android:id="@+id/item5"
+                    android:icon="@mipmap/icon_android"
+                    android:title="@string/menu_drawer_5" />
+
+                <item
+                    android:id="@+id/item6"
+                    android:icon="@mipmap/icon_flutter"
+                    android:title="@string/menu_drawer_6" />
+
+                <item
+                    android:id="@+id/item7"
+                    android:icon="@mipmap/icon_kotlin"
+                    android:title="@string/menu_drawer_7" />
+
+                <item
+                    android:id="@+id/item8"
+                    android:icon="@mipmap/icon_jetpack"
+                    android:title="@string/menu_drawer_8" />
+
+                <item
+                    android:id="@+id/item9"
+                    android:icon="@mipmap/icon_apple"
+                    android:title="@string/menu_drawer_9" />
+
+                <item
+                    android:id="@+id/item10"
+                    android:icon="@mipmap/icon_wechat"
+                    android:title="@string/menu_drawer_10" />
+
+            </menu>
+        </item>
+    </group>
+
+</menu>
