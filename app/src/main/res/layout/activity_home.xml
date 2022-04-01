@@ -47,7 +47,7 @@
                 app:layout_collapseMode="pin"
                 app:menu="@menu/top_app_bar"
                 app:navigationIcon="@mipmap/ic_round_menu_white_24"
-                app:title="页面标题" />
+                tools:title="Alice" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

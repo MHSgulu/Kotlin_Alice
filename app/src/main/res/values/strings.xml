@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KT-Alice</string>
+    <string name="app_name">Alice</string>
 
     <!-- 菜单 -->
     <string name="menu_title">设置</string>
