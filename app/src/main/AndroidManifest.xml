@@ -4,11 +4,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_default"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_round_dafault"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Kotlin_Alice">
+        android:theme="@style/Theme.Alice">
         <!-- 从 Android 12 开始,必须设置 android:exported;使用true使活动可用于其他应用程序,否则使用false.对于启动器活动,这应该设置为true. -->
         <activity
             android:name=".ui.HomeActivity"

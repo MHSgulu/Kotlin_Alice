@@ -34,7 +34,7 @@
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/img_iu_drawer_header"
+                android:src="@mipmap/img_bingy"
                 tools:ignore="ContentDescription" />
 
             <com.google.android.material.appbar.MaterialToolbar
@@ -88,7 +88,7 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginBottom="?attr/actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:visibility="visible">
@@ -124,7 +124,7 @@
         app:navigationIcon="@mipmap/ic_round_menu_white_24" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating"
+        android:id="@+id/floatingActionButton"
         style="@style/Widget.App.FloatingActionButton.withBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
