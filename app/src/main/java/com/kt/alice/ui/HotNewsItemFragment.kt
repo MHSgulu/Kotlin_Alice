@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kt.alice.R
+import com.kt.alice.adapters.MyItemRecyclerViewAdapter
 import com.kt.alice.ui.placeholder.PlaceholderContent
 
 /**

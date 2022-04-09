@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 用于动画的值 -->
+<resources>
+
+    <!-- 幻灯片过渡动画的持续时间（以毫秒为单位） -->
+    <integer name="slide">200</integer>
+</resources>

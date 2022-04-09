@@ -2,7 +2,6 @@ package com.kt.alice.ui
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.blue
 import androidx.core.graphics.green
 import androidx.core.graphics.red
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.math.MathUtils
 import com.google.android.material.navigation.NavigationView
@@ -19,9 +20,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.kt.alice.R
 import com.kt.alice.databinding.FragmentHomeBinding
 
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class HomeFragment : Fragment() {
 
@@ -34,8 +32,8 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            //param1 = it.getString(ARG_PARAM1)
+            //param2 = it.getString(ARG_PARAM2)
         }
     }
 
@@ -44,6 +42,12 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
+
+        /*val viewModel: BingWallpaperViewModel = ViewModelProvider(this).get(BingWallpaperViewModel::class.java)
+
+        viewModel.getBingWallpaper().observe(viewLifecycleOwner) {
+            XLog.v("当钱数据" + it.images)
+        }*/
 
         initTopBar()
         initBottomBar()
@@ -138,7 +142,11 @@ class HomeFragment : Fragment() {
 
         binding.bottomAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.search -> Toast.makeText(context, "搜索", Toast.LENGTH_SHORT).show()
+                R.id.search -> {
+                    Toast.makeText(context, "搜索", Toast.LENGTH_SHORT).show()
+                    //findNavController(this).navigate(R.id.action_home_to_news_details)
+                    findNavController().navigate(R.id.action_home_to_news_details)
+                }
                 R.id.more -> Toast.makeText(context, "更多操作", Toast.LENGTH_SHORT).show()
             }
             true
@@ -174,8 +182,8 @@ class HomeFragment : Fragment() {
         fun newInstance(param1: String, param2: String) =
             HomeFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    //putString(ARG_PARAM1, param1)
+                    //putString(ARG_PARAM2, param2)
                 }
             }
     }

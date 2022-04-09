@@ -1,4 +1,4 @@
-package com.kt.alice.ui
+package com.kt.alice.adapters
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater

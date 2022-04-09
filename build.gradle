@@ -1,4 +1,14 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+//所有 buildscript {} 块必须出现在脚本中的任何 plugins {} 块之前
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+
+    }
+}
+
 plugins {
     id 'com.android.application' version '7.1.2' apply false
     id 'com.android.library' version '7.1.2' apply false

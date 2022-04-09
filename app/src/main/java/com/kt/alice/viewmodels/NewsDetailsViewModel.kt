@@ -1,4 +1,4 @@
-package com.kt.alice.ui
+package com.kt.alice.viewmodels
 
 import androidx.lifecycle.ViewModel
 
