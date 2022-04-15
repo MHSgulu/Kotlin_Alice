@@ -1,4 +1,4 @@
-package com.kt.alice.ui;
+package com.kt.alice.template;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -17,6 +17,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.kt.alice.R
 import com.kt.alice.databinding.ActivityHomeBinding
+import com.kt.alice.template.ItemListDialogFragment
 
 class HomeActivity : AppCompatActivity() {
 
