@@ -12,6 +12,7 @@ import androidx.core.graphics.green
 import androidx.core.graphics.red
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.math.MathUtils
 import com.google.android.material.navigation.NavigationView
@@ -20,6 +21,11 @@ import com.google.android.material.snackbar.Snackbar
 import com.kt.alice.R
 import com.kt.alice.databinding.FragmentHomeBinding
 import com.kt.alice.template.ItemListDialogFragment
+import com.kt.alice.utils.GlideEngine
+import com.luck.picture.lib.basic.PictureSelector
+import com.luck.picture.lib.config.SelectMimeType
+import com.luck.picture.lib.entity.LocalMedia
+import com.luck.picture.lib.interfaces.OnResultCallbackListener
 
 
 class HomeFragment : Fragment() {
@@ -132,7 +138,26 @@ class HomeFragment : Fragment() {
             true
         }
 
+        binding.backgroundPicture.setOnClickListener{
+            selectPicture();
+        }
 
+
+    }
+
+    private fun selectPicture() {
+        PictureSelector.create(this)
+            .openGallery(SelectMimeType.ofImage())
+            .setImageEngine(GlideEngine.createGlideEngine())
+            .forResult(object : OnResultCallbackListener<LocalMedia?> {
+                override fun onResult(result: ArrayList<LocalMedia?>?) {
+                    Glide.with(requireActivity()).load(result!![0]!!.path).into(binding.backgroundPicture)
+                    //TODO MI UI系统的深夜模式似乎会根据当下透出的背景图片亮度自动校准状态栏 昼夜模式
+                }
+                override fun onCancel() {
+
+                }
+            })
     }
 
     private fun initBottomBar() {
