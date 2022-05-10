@@ -13,6 +13,7 @@ import androidx.core.graphics.red
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.elvishew.xlog.XLog
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.math.MathUtils
 import com.google.android.material.navigation.NavigationView
@@ -46,7 +47,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
 
@@ -151,8 +152,19 @@ class HomeFragment : Fragment() {
             .setImageEngine(GlideEngine.createGlideEngine())
             .forResult(object : OnResultCallbackListener<LocalMedia?> {
                 override fun onResult(result: ArrayList<LocalMedia?>?) {
-                    Glide.with(requireActivity()).load(result!![0]!!.path).into(binding.backgroundPicture)
-                    //TODO MI UI系统的深夜模式似乎会根据当下透出的背景图片亮度自动校准状态栏 昼夜模式
+                    if (result != null && result.isNotEmpty()){
+                        XLog.v("getPath: " + result[0]?.path)
+                        XLog.v("getAvailablePath: " + result[0]?.availablePath)
+                        XLog.v("getRealPath: " + result[0]?.realPath)
+                        XLog.v("getOriginalPath: " + result[0]?.originalPath)
+                        XLog.v("getCompressPath: " + result[0]?.compressPath)
+                        XLog.v("getCutPath: " + result[0]?.cutPath)
+                        XLog.v("getSandboxPath: " + result[0]?.sandboxPath)
+                        XLog.v("getVideoThumbnailPath: " + result[0]?.videoThumbnailPath)
+                        XLog.v("getWatermarkPath: " + result[0]?.watermarkPath)
+                        Glide.with(requireActivity()).load(result[0]?.path).into(binding.backgroundPicture)
+                        //TODO MI UI系统的深夜模式似乎会根据当下透出的背景图片亮度自动校准状态栏 昼夜模式
+                    }
                 }
                 override fun onCancel() {
 
