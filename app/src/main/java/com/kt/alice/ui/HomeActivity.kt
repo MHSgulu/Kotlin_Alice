@@ -9,6 +9,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.blue
 import androidx.core.graphics.green
 import androidx.core.graphics.red
+import com.drake.tooltip.dialog.BubbleDialog
+import com.drake.tooltip.toast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.android.material.math.MathUtils
@@ -120,12 +122,11 @@ class HomeActivity : AppCompatActivity() {
 
         binding.bottomAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.search -> Toast.makeText(this, "搜索", Toast.LENGTH_SHORT).show()
+                R.id.search -> toast("搜索")
                 R.id.more -> Toast.makeText(this, "更多操作", Toast.LENGTH_SHORT).show()
             }
             true
         }
-
 
     }
 
@@ -136,15 +137,9 @@ class HomeActivity : AppCompatActivity() {
 
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.favorite -> Toast.makeText(
-                    this,
-                    "收藏按钮",
-                    Toast.LENGTH_SHORT
-                ).show()
-                R.id.search -> Toast.makeText(this, "搜索按钮", Toast.LENGTH_SHORT)
-                    .show()
-                R.id.more -> Toast.makeText(this, "菜单=更多选项", Toast.LENGTH_SHORT)
-                    .show()
+                R.id.favorite -> toast("收藏动作")
+                R.id.search -> BubbleDialog(this).show()
+                R.id.more -> toast("更多动作")
             }
             true
         }
