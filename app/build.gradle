@@ -79,5 +79,7 @@ dependencies {
 
     implementation 'com.github.liangjingkanji:Tooltip:1.2.1' //Toast
 
+    implementation 'com.github.liangjingkanji:LogCat:1.2.3' //Log
+
 
 }

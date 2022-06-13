@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.util.Log
+import com.drake.logcat.LogCat
 import com.elvishew.xlog.LogConfiguration
 import com.elvishew.xlog.LogLevel
 import com.elvishew.xlog.XLog
@@ -32,6 +33,9 @@ class MyApplication : Application() {
             .tag("Alice-Log") // 指定 TAG，默认为 "X-LOG"
             .build()
         XLog.init(config)
+
+        LogCat.setDebug(true,"KT_Alice")
+
 
     }
 

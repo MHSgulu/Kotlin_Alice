@@ -13,6 +13,8 @@ import androidx.core.graphics.red
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.drake.logcat.LogCat
+import com.drake.tooltip.dialog.BubbleDialog
 import com.elvishew.xlog.XLog
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.math.MathUtils
@@ -195,7 +197,7 @@ class HomeFragment : Fragment() {
 
     private fun initTopBar() {
         binding.toolbar.setNavigationOnClickListener {
-            Toast.makeText(context, "点击导航图标", Toast.LENGTH_SHORT).show()
+            LogCat.v("11111")
         }
 
         binding.toolbar.setOnMenuItemClickListener {
@@ -205,8 +207,7 @@ class HomeFragment : Fragment() {
                     "收藏按钮",
                     Toast.LENGTH_SHORT
                 ).show()
-                R.id.search -> Toast.makeText(context, "搜索按钮", Toast.LENGTH_SHORT)
-                    .show()
+                R.id.search -> BubbleDialog(requireContext()).show()
                 R.id.more -> Toast.makeText(context, "菜单=更多选项", Toast.LENGTH_SHORT)
                     .show()
             }
