@@ -23,4 +23,8 @@ object Constant {
     const val QUERY_SUCCESS_CODE = "10000" //成功码
     const val ERROR_CODE_LIMIT = "10040" //调用数据达到上限
 
+
+
+
+
 }

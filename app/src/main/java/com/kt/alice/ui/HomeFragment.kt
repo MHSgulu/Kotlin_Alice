@@ -14,6 +14,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.drake.logcat.LogCat
+import com.drake.net.Get
+import com.drake.net.Post
+import com.drake.net.utils.scopeNetLife
 import com.drake.tooltip.dialog.BubbleDialog
 import com.elvishew.xlog.XLog
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -23,6 +26,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.kt.alice.R
 import com.kt.alice.databinding.FragmentHomeBinding
+import com.kt.alice.model.BingWallpaper
 import com.kt.alice.template.ItemListDialogFragment
 import com.kt.alice.utils.GlideEngine
 import com.luck.picture.lib.basic.PictureSelector
@@ -51,7 +55,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater,container,false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         /*val viewModel: BingWallpaperViewModel = ViewModelProvider(this).get(BingWallpaperViewModel::class.java)
 
@@ -64,8 +68,20 @@ class HomeFragment : Fragment() {
         initListener()
         initBottomSheet()
 
+        getTodayBingWallpaper()
 
         return binding.getRoot()
+    }
+
+    private fun getTodayBingWallpaper() {
+        scopeNetLife { // 创建作用域
+            // 这个大括号内就属于作用域内部
+            val data = Post<String>("https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN") {
+            }.await() // 发起GET请求并返回`String`类型数据
+            LogCat.v("返回数据：$data")
+        }
+
+
     }
 
     private fun initBottomSheet() {
@@ -74,7 +90,8 @@ class HomeFragment : Fragment() {
         binding.scrim.visibility = View.GONE
 
         //手动设置 稀松布背景 类似底部工作表
-        bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+        bottomSheetBehavior.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 //XLog.v("newState:  $newState")
             }
@@ -141,7 +158,7 @@ class HomeFragment : Fragment() {
             true
         }
 
-        binding.backgroundPicture.setOnClickListener{
+        binding.backgroundPicture.setOnClickListener {
             selectPicture();
         }
 
@@ -154,7 +171,7 @@ class HomeFragment : Fragment() {
             .setImageEngine(GlideEngine.createGlideEngine())
             .forResult(object : OnResultCallbackListener<LocalMedia?> {
                 override fun onResult(result: ArrayList<LocalMedia?>?) {
-                    if (result != null && result.isNotEmpty()){
+                    if (result != null && result.isNotEmpty()) {
                         XLog.v("getPath: " + result[0]?.path)
                         XLog.v("getAvailablePath: " + result[0]?.availablePath)
                         XLog.v("getRealPath: " + result[0]?.realPath)
@@ -164,10 +181,12 @@ class HomeFragment : Fragment() {
                         XLog.v("getSandboxPath: " + result[0]?.sandboxPath)
                         XLog.v("getVideoThumbnailPath: " + result[0]?.videoThumbnailPath)
                         XLog.v("getWatermarkPath: " + result[0]?.watermarkPath)
-                        Glide.with(requireActivity()).load(result[0]?.path).into(binding.backgroundPicture)
+                        Glide.with(requireActivity()).load(result[0]?.path)
+                            .into(binding.backgroundPicture)
                         //TODO MI UI系统的深夜模式似乎会根据当下透出的背景图片亮度自动校准状态栏 昼夜模式
                     }
                 }
+
                 override fun onCancel() {
 
                 }
